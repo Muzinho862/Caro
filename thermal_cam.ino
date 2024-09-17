@@ -11,16 +11,21 @@ void setup() {
 }
 
 void loop() {
-  float pixels[64];
-
-  amg.readPixels(pixels);
-
+  
+  float pix[64];
+  amg.readPixels(pix);
+  int c = 0;
+ 
   for (int i = 0; i < 64; i++) {
-    Serial.print(pixels[i]);
+    Serial.print(pix[i]);
     Serial.print("\t");
 
-    if ((i + 1) % 8 == 0) {
+    c++;
+
+    if (c == 8) {
+      
       Serial.println();
+      c = 0;  
     }
   }
 
